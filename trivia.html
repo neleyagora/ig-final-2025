@@ -98,14 +98,14 @@
                         <section class="card-body trivia-card">
                           <h2 class="card-title">TRIVIA CLAROMEQUENSE</h2>
                           <br>
-                          <p>
-                            Respondé correctamente las preguntas para alcanzar el mayor puntaje posible.
-                            Tenés 2 pistas disponibles por pregunta, pero sólo 3 totales para toda la partida. Tené en cuenta que si utilizás pistas, restás puntos.
+                          <p>¿Cuánto sabés sobre Claromecó? Responde las siguientes preguntas y descubre tu puntuación final.
+                            
                           </p>
                           <h2 class="card-title">Instrucciones</h2>
-                          <p>
-                            ¿Cuánto sabés sobre Claromecó? Responde las siguientes preguntas y descubre tu puntuación final.
-                          </p>
+                          <p>Respondé correctamente las preguntas para alcanzar el mayor puntaje posible.</p>
+                            <p></p>Tenés 1 pista disponibles por pregunta, pero sólo 3 totales para toda la partida. Tené en cuenta que si utilizás pistas, ¡restarás puntos!
+                            
+                    </p>
 
                           <button id="startGame" class="btn btn-primary">Comenzar Juego</button>
                           <div id="trivia" class="hidden">
@@ -141,11 +141,11 @@
           let score = 0, hintsUsed = 0;
           const maxHints = 3;
           const questions = [
-              { question: "¿Cuál es la población de Claromecó?", options: ["1000-2000", "2000-3000", "3000-4000", "4000-5000"], answer: 1, hint: "Está entre 2000 y 3000 habitantes." },
-              { question: "¿Qué atractivo turístico es famoso por una publicidad?", options: ["Playa", "Faro", "Reserva", "Arroyo"], answer: 1, hint: "Es una torre de luz." },
+              { question: "¿Cuál es la población actual de Claromecó?", options: ["1000-2000", "2000-3000", "3000-4000", "4000-5000"], answer: 1, hint: "El número es similar al año actual." },
+              { question: "¿Qué atractivo turístico es famoso por una publicidad de telefonía?", options: ["Playa", "Faro", "Reserva", "Arroyo"], answer: 1, hint: "Publicidad Claromecopa hacía referencia a una torre multimedial." },
               { question: "¿Cuántos años cumple Claromecó en 2025?", options: ["100", "105", "110", "115"], answer: 1, hint: "Se fundó en 1920." },
-              { question: "¿Qué océano baña Claromecó?", options: ["Atlántico Norte", "Pacífico", "Índico", "Atlántico Sur"], answer: 3, hint: "Es parte del Atlántico." },
-              { question: "¿Cuándo se ve el sol sobre el mar?", options: ["Amanecer", "Atardecer", "Ambos", "Nunca"], answer: 2, hint: "Se ve tanto al comenzar como al terminar el día." }
+              { question: "¿Qué océano baña las playas de Claromecó?", options: ["Atlántico Norte", "Pacífico", "Índico", "Atlántico Sur"], answer: 3, hint: "Comienza con la primer letra del abecedario." },
+              { question: "¿Cuándo se ve el sol sobre el horizonte del mar?", options: ["Amanecer", "Atardecer", "Ambos", "Nunca"], answer: 2, hint: "El sol se funde y renace del mar." }
           ];
           
           document.getElementById('startGame').addEventListener('click', () => {
@@ -168,14 +168,17 @@
                   questionsDiv.appendChild(div);
               });
           }
-        
+          function updateScore() {
+              document.getElementById('score').textContent = score;
+              document.getElementById('hintsLeft').textContent = maxHints - hintsUsed;
+          }
           function useHint(index) {
               if (hintsUsed < maxHints) {
                   document.getElementById(`hint${index}`).classList.remove('hidden');
                   document.getElementById(`hintBtn${index}`).disabled = true;
                   hintsUsed++;
-                  score = Math.max(0, score - 10);
-                  updateScore();
+                  score -= 10;
+                updateScore();
                   
                   alert(`Pista: ${questions[index].hint}\nPistas restantes: ${maxHints - hintsUsed}`);
         
@@ -220,17 +223,26 @@
                     questionContainer.style.backgroundColor = "rgba(240, 128, 128, 0.6)"; // Incorrecta en rojo
                   }
               });
+
+              
+
         
               updateScore();
               document.getElementById('restartGame').classList.remove('hidden');
-          });
-        
-          function updateScore() {
-              document.getElementById('score').textContent = score;
-              document.getElementById('hintsLeft').textContent = maxHints - hintsUsed;
-          }
-        
-          document.getElementById('restartGame').addEventListener('click', () => {
+              let resultMessage = "";
+    if (score < 50) {
+        resultMessage = "¡Intenta nuevamente para seguir aprendiendo!";
+    } else if (score >= 50 && score < 100) {
+        resultMessage = "¡Buen trabajo! Sabés bastante sobre Claromecó.";
+    } else if (score === 100) {
+        resultMessage = "¡Eres un gran conocedor! Felicitaciones.";
+    }
+
+    alert(`Tu puntaje final es: ${score}\n${resultMessage}`);
+    disableHintButtons();
+    
+});
+document.getElementById('restartGame').addEventListener('click', () => {
               score = 0; hintsUsed = 0;
               document.getElementById('score').textContent = '0';
               document.getElementById('hintsLeft').textContent = '3';
@@ -238,6 +250,10 @@
               document.getElementById('restartGame').classList.add('hidden');
               loadQuestions();
           });
+          function disableHintButtons() {
+    const hintButtons = document.querySelectorAll('[id^=hintBtn]');
+    hintButtons.forEach(btn => btn.disabled = true);
+}
         </script>
     
 </body>
