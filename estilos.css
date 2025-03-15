@@ -18,9 +18,11 @@ html {
     
 }
 
-#text {
-    font-size: 2em;
+.text {
+    font-size: 1rem;
 }
+
+
 
 .card {
     background-color: rgba(0, 0, 0, 0.6); 
@@ -51,7 +53,6 @@ html {
     background: url('imagenes/fondo.jpg') repeat-y center center/cover;
     background-size: cover; 
     background-repeat: repeat-y;
-    height: 100vh; 
     height: auto;
     display: flex;
     flex-direction: column;
@@ -64,7 +65,7 @@ html {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    flex: 1;
+   
 
 }
 .navbar {
@@ -135,13 +136,7 @@ color: white;
     }
 }
 
-footer {
-    text-align: center;
-    font-size: smaller;
-    color: white;
-    background: rgba(0, 0, 0, 0.5);
-    padding: 10px;
-}
+
 
 
 .caja-envolvente {
@@ -155,8 +150,8 @@ footer {
 
 
 .tarjeta {
-    background-color:rgb(199, 195, 201); /* rgb(137, 135, 146);*/
-    color: rgb(77, 50, 48);
+    background-color:rgb(199, 195, 201);  /* rgb(137, 135, 146);*/
+    color: rgb(50, 32, 30);
     border: none;
     border-radius: 10px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
@@ -182,7 +177,9 @@ footer {
     background-color: rgb(137, 135, 146);
     color: white;
     border-radius: 5px;
+    font-size: smaller;
 }
+
 
 
 @media (max-width: 768px) {
@@ -216,6 +213,7 @@ footer {
 
 .tarjeta .card-text {
     line-height: 1.5;
+    text-shadow: none !important;
 }
 
 
@@ -292,4 +290,25 @@ footer {
     padding: 20px;
     text-align: center;
     font-size: 1.2rem;
+}
+
+.header-video {
+    width: 100%;
+    height: 50vh; /* 30% de la altura de la pantalla */
+    object-fit: cover; /* Mantiene la proporción sin deformar */
+    display: block;
+}
+
+/* Ajustes para dispositivos pequeños */
+@media (max-width: 768px) {
+    .header-video {
+        height: 25vh; /* Reducir un poco en móviles */
+    }
+}
+
+@media (max-width: 768px) {
+    .text-section {
+        font-size: 1rem; 
+        padding: 10px;
+    }
 }
