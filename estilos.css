@@ -312,3 +312,22 @@ footer {
         padding: 10px;
     }
 }
+
+.trivia-card {
+    max-width: 600px;  /* Limita el ancho para mejor visualización */
+    margin: auto;  /* Centra la card */
+    padding: 20px;
+    text-align: center;  /* Centra todo el texto dentro */
+    background-color: rgba(0, 0, 0, 0.6); 
+}
+
+.question-container {
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    background-color: rgba(0, 0, 0, 0.6); 
+}
+
+.hint-btn {
+    margin-top: 5px;
+}

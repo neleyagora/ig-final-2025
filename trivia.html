@@ -95,7 +95,7 @@
                 <!-- Caja envolvente de las tarjetas -->
                 <div class="col-md-12 caja-envolvente">
                     <div class="row justify-content-center">
-                        <section class="card-body">
+                        <section class="card-body trivia-card">
                           <h2 class="card-title">TRIVIA CLAROMEQUENSE</h2>
                           <br>
                           <p>
@@ -159,10 +159,11 @@
               questionsDiv.innerHTML = '';
               questions.forEach((q, index) => {
                   const div = document.createElement('div');
+                  div.classList.add('question-container','p-3', 'rounded');
                   div.innerHTML = `<p>${q.question}</p>` + q.options.map((opt, i) =>
                       `<label><input type="radio" name="q${index}" value="${i}"> ${opt}</label><br>`
                   ).join('') + `
-                  <button type="button" id="hintBtn${index}" onclick="useHint(${index})" class="btn btn-warning">Pista</button>
+                  <button type="button" id="hintBtn${index}" onclick="useHint(${index})" class="btn btn-warning hint-btn">Pista</button>
                   <p id="hint${index}" class="hidden">${q.hint}</p>`;
                   questionsDiv.appendChild(div);
               });
@@ -214,9 +215,9 @@
                   const userAnswer = parseInt(selected.value);
                   if (userAnswer === q.answer) {
                       score += 20;
-                      questionContainer.style.backgroundColor = "lightgreen"; // Correcta en verde
+                      questionContainer.style.backgroundColor = "rgba(144, 238, 144, 0.6)"; // Correcta en verde
                   } else {
-                      questionContainer.style.backgroundColor = "lightcoral"; // Incorrecta en rojo
+                    questionContainer.style.backgroundColor = "rgba(240, 128, 128, 0.6)"; // Incorrecta en rojo
                   }
               });
         
