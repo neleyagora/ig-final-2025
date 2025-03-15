@@ -22,7 +22,7 @@ html {
     font-size: 1rem;
 }
 
-
+.hidden { display: none; }
 
 .card {
     background-color: rgba(0, 0, 0, 0.6); 
