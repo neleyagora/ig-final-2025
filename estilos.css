@@ -331,3 +331,14 @@ footer {
 .hint-btn {
     margin-top: 5px;
 }
+
+.img-about {
+    max-width: 30%; /* Ajusta el tamaño al 50% del contenedor */
+    height: auto; /* Mantiene la proporción */
+    display: block; /* Centra la imagen si es necesario */
+    margin: 0 auto; /* Centrado */
+}
+.text-about {
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
